@@ -7,6 +7,7 @@
     tools:context=".ui.personageList.view.PersonageListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_listPersonage"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/margin_16"
