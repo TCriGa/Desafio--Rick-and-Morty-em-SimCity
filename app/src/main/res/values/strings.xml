@@ -3,4 +3,6 @@
     <string name="description_image_splash">Imagem dos personagens Rick and Morty com uma bola verde atrás em um planeta desconhecido, com dedos de mãos laranja e unha verde</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="personage_rick_and_morty">personagens rick and morty</string>
+    <string name="name_personage">Name Personage</string>
 </resources>
