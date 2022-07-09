@@ -5,22 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-
     tools:context=".ui.characterdetail.view.CharacterDetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_rickSanches"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/height_250"
             android:layout_margin="@dimen/margin_8"
             android:scaleType="fitCenter"
             android:src="@drawable/rick_sanches"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/text_namePersonage"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,6 +32,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/size_15"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/image_rickSanches"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_rickSanches" />
