@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/personageListFragment"
-        android:name="br.com.zup.rickandmortyemsimcity.ui.personageList.view.PersonageListFragment"
+        android:name="br.com.zup.rickAndMortyEmSimCity.ui.personageList.view.PersonageListFragment"
         android:label="Rick and Morty"
         tools:layout="@layout/fragment_personage_list" />
 </navigation>
