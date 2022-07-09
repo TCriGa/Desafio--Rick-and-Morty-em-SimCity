@@ -20,4 +20,15 @@
         app:spanCount="2"
         tools:listitem="@layout/character_list_item" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        app:srcCompat="@drawable/ic_baseline_star_24"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="@dimen/margin_16"
+        android:contentDescription="@string/descricao_botao_flutuante"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:maxImageSize="@dimen/height_40"
+        app:tint="@android:color/white"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
