@@ -2,8 +2,10 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cv_itemList"
-    android:layout_width="wrap_content"
+    app:cardCornerRadius="@dimen/margin_8"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/dark_blue"
     android:layout_margin="@dimen/margin_8">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,7 +14,7 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_icRickMorty"
-            android:layout_width="@dimen/width_150"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/height_150"
             android:contentDescription="@string/personage_rick_and_morty"
             android:scaleType="centerCrop"
@@ -24,6 +26,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_namePersonage"
+            android:layout_margin="@dimen/margin_8"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/name_personage"

@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/personageListFragment"
-        android:name="br.com.zup.rickAndMortyEmSimCity.ui.personageList.view.PersonageListFragment"
+        android:name="br.com.zup.rickAndMortyEmSimCity.ui.characterList.view.CharacterListFragment"
         android:label="Rick and Morty"
-        tools:layout="@layout/fragment_personage_list" />
+        tools:layout="@layout/fragment_character_list" >
+        <action
+            android:id="@+id/action_personageListFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="br.com.zup.rickAndMortyEmSimCity.ui.characterdetail.view.CharacterDetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_character_detail" />
 </navigation>

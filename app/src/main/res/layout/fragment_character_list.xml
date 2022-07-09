@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.personageList.view.PersonageListFragment">
+    tools:context=".ui.characterList.view.CharacterListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_listPersonage"
@@ -18,6 +18,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2"
-        tools:listitem="@layout/personage_list_item" />
+        tools:listitem="@layout/character_list_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

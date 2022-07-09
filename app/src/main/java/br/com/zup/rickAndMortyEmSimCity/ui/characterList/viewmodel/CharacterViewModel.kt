@@ -1,4 +1,4 @@
-package br.com.zup.rickAndMortyEmSimCity.ui.personageList.viewmodel
+package br.com.zup.rickAndMortyEmSimCity.ui.characterList.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class PersonageViewModel : ViewModel() {
+class CharacterViewModel : ViewModel() {
     private val _characterResponse = MutableLiveData<List<CharacterResult>>()
     val characterResponse: LiveData<List<CharacterResult>> = _characterResponse
    private val viewState = ViewState()
