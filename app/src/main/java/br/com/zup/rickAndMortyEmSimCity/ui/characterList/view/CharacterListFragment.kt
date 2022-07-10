@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,7 @@ import br.com.zup.rickAndMortyEmSimCity.R
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 import br.com.zup.rickAndMortyEmSimCity.databinding.FragmentCharacterListBinding
 import br.com.zup.rickAndMortyEmSimCity.ui.characterList.viewmodel.CharacterViewModel
+import br.com.zup.rickAndMortyEmSimCity.ui.viewstate.ViewState
 
 class CharacterListFragment : Fragment() {
 
@@ -36,14 +38,26 @@ class CharacterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getAllPersonage()
         exhibitRecycleView()
+        viewModel.getAllPersonage()
         initObserver()
     }
 
     private fun initObserver() {
-        viewModel.characterResponse.observe(this.viewLifecycleOwner) {
-            adapterList.updateMovieList(it)
+        viewModel.characterListState.observe(this.viewLifecycleOwner) {
+            when (it) {
+                is ViewState.Success -> {
+                    adapterList.updateMovieList(it.data)
+                }
+                is ViewState.Error -> {
+                    Toast.makeText(
+                        context,
+                        "${it.throwable.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                else -> {}
+            }
         }
     }
 
@@ -58,3 +72,4 @@ class CharacterListFragment : Fragment() {
             .navigate(R.id.action_personageListFragment_to_characterDetailFragment, bundle)
     }
 }
+

@@ -1,30 +1,40 @@
 package br.com.zup.rickAndMortyEmSimCity.ui.characterList.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.app.Application
+import androidx.lifecycle.*
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.remote.RetrofitService
+import br.com.zup.rickAndMortyEmSimCity.domain.usecase.CharacterUseCase
 import br.com.zup.rickAndMortyEmSimCity.ui.viewstate.ViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CharacterViewModel : ViewModel() {
-    private val _characterResponse = MutableLiveData<List<CharacterResult>>()
-    val characterResponse: LiveData<List<CharacterResult>> = _characterResponse
-   private val viewState = ViewState()
+class CharacterViewModel(application: Application) : AndroidViewModel(application) {
+   private val characterUseCase = CharacterUseCase(application)
+    val characterListState = MutableLiveData<ViewState<List<CharacterResult>>>()
+
     fun getAllPersonage() {
         viewModelScope.launch {
             try {
                 val response = withContext(Dispatchers.IO) {
-                    RetrofitService.apiService.getAllCharacterNetwork()
+                    characterUseCase.getAllCharacterNetwork()
                 }
-                _characterResponse.value = response.results
-            } catch (ex: Exception) {
-                viewState.state.value = ViewState.State.ERROR
+               characterListState.value = response
 
+            } catch (ex: Exception) {
+                characterListState.value =
+                    ViewState.Error(Throwable("Não foi possível carregar a lista!"))
+            }
+        }
+    }
+    fun updateMovieFavorited(characterResult: CharacterResult) {
+        viewModelScope.launch {
+            try {
+                val response = withContext(Dispatchers.IO) {
+                    characterUseCase.updateCharacter(characterResult)
+                }
+            } catch (ex: Exception) {
             }
         }
     }

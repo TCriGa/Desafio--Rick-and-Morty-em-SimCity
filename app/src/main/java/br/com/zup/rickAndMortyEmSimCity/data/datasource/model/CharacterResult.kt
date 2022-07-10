@@ -2,34 +2,26 @@ package br.com.zup.rickAndMortyEmSimCity.data.datasource.model
 
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
-import kotlinx.parcelize.RawValue
 
 @Parcelize
+@Entity(tableName = "character")
 data class CharacterResult(
-    @SerializedName("created")
-    var created: String = "",
-    @SerializedName("episode")
-    var episode: List<String> = listOf(),
+    @SerializedName("id")
+    @PrimaryKey(autoGenerate = false)
+    var id: Int = 0,
+
     @SerializedName("gender")
     var gender: String = "",
-    @SerializedName("id")
-    var id: Int = 0,
     @SerializedName("image")
     var image: String = "",
-    @SerializedName("location")
-    var location:@RawValue Location = Location(),
     @SerializedName("name")
     var name: String = "",
-    @SerializedName("origin")
-    var origin:@RawValue Origin = Origin(),
     @SerializedName("species")
     var species: String = "",
     @SerializedName("status")
     var status: String = "",
-    @SerializedName("type")
-    var type: String = "",
-    @SerializedName("url")
-    var url: String = ""
 ) : Parcelable
