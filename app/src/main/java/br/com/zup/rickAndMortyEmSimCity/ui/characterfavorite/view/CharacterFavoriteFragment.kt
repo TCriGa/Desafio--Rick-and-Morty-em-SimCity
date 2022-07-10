@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -26,7 +27,7 @@ class CharacterFavoriteFragment : Fragment() {
     }
 
     private val adapterList: CharacterFavoriteAdapter by lazy {
-        CharacterFavoriteAdapter(arrayListOf(), this::goToCharacterDetail, this:: goToDisfavorCharacter)
+        CharacterFavoriteAdapter(arrayListOf(), this::goToCharacterDetail)
     }
 
     override fun onCreateView(
@@ -45,13 +46,9 @@ class CharacterFavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initObserver()
+        viewModel.getCharactersFavorite()
         exhibitRecycleView()
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.getCharactersFavorite()
     }
 
     private fun initObserver() {
@@ -65,7 +62,7 @@ class CharacterFavoriteFragment : Fragment() {
                     Toast.makeText(
                         context,
                         "${it.throwable.message}",
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
                 else -> {}
@@ -77,8 +74,9 @@ class CharacterFavoriteFragment : Fragment() {
                     Toast.makeText(
                         context,
                         "O Personagem ${it.data.name} foi desfavoritado!",
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                     ).show()
+
                 }
                 is ViewState.Error -> {
                     Toast.makeText(
@@ -96,13 +94,8 @@ class CharacterFavoriteFragment : Fragment() {
         binding.rvFavoriteCharacter.adapter = adapterList
     }
 
-    private fun goToDisfavorCharacter(characterResult: CharacterResult) {
-        viewModel.disfavorCharacter(characterResult)
-    }
-
     private fun goToCharacterDetail(characterResult: CharacterResult) {
         val bundle = bundleOf(BUNDLE_KEY to characterResult)
-
         NavHostFragment.findNavController(this)
             .navigate(R.id.action_characterFavoriteFragment_to_characterDetailFragment, bundle)
     }

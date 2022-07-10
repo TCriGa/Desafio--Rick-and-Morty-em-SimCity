@@ -13,7 +13,6 @@ import kotlinx.coroutines.withContext
 
 class CharacterDetailViewModel (application: Application): AndroidViewModel(application){
     private val characterUseCase = CharacterUseCase(application)
-    val characterDetailState = MutableLiveData<ViewState<List<CharacterResult>>>()
     val characterFavoriteDetailState = MutableLiveData<ViewState<CharacterResult>>()
 
     fun updateDetailFavorite(characterResult: CharacterResult) {

@@ -14,6 +14,7 @@ import br.com.zup.rickAndMortyEmSimCity.R
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 import br.com.zup.rickAndMortyEmSimCity.databinding.FragmentCharacterListBinding
 import br.com.zup.rickAndMortyEmSimCity.ui.characterList.viewmodel.CharacterViewModel
+import br.com.zup.rickAndMortyEmSimCity.ui.characterfavorite.view.CharacterFavoriteAdapter
 import br.com.zup.rickAndMortyEmSimCity.ui.viewstate.ViewState
 
 class CharacterListFragment : Fragment() {
@@ -23,6 +24,7 @@ class CharacterListFragment : Fragment() {
     private val adapterList: CharacterListAdapter by lazy {
         CharacterListAdapter(arrayListOf(), this::goToPersonageDetail)
     }
+
 
     private val viewModel: CharacterViewModel by lazy {
         ViewModelProvider(this)[CharacterViewModel::class.java]
@@ -49,6 +51,7 @@ class CharacterListFragment : Fragment() {
             when (it) {
                 is ViewState.Success -> {
                     adapterList.updateCharacterList(it.data.toMutableList())
+                    goToFavoriteList(it.data)
                 }
                 is ViewState.Error -> {
                     Toast.makeText(
@@ -62,10 +65,12 @@ class CharacterListFragment : Fragment() {
         }
     }
 
-    private fun goToFavoriteList(characterResult: CharacterResult) {
+    private fun goToFavoriteList(characterResult: List<CharacterResult>) {
         val bundle = bundleOf(BUNDLE_KEY to characterResult)
-        NavHostFragment.findNavController(this)
-            .navigate(R.id.action_personageListFragment_to_characterFavoriteFragment, bundle)
+        binding.floatingActionButton.setOnClickListener {
+            NavHostFragment.findNavController(this)
+                .navigate(R.id.action_personageListFragment_to_characterFavoriteFragment, bundle)
+        }
     }
 
     private fun exhibitRecycleView() {

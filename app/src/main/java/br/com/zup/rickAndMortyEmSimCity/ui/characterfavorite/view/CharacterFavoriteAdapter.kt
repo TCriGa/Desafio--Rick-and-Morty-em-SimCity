@@ -9,7 +9,6 @@ import com.squareup.picasso.Picasso
 
 class CharacterFavoriteAdapter(
     private var characterList: MutableList<CharacterResult>,
-    private val clickCharacter: (characterResult: CharacterResult) -> Unit,
     private val clickDisfavorCharacter : (CharacterResult : CharacterResult) -> Unit
 
 ) : RecyclerView.Adapter<CharacterFavoriteAdapter.ViewHolder>() {
@@ -24,12 +23,11 @@ class CharacterFavoriteAdapter(
         val character = characterList[position]
         holder.showCharacterInfo(character)
         holder.binding.cvItemList.setOnClickListener {
-            clickCharacter(character)
+            clickDisfavorCharacter(character)
         }
     }
 
     override fun getItemCount(): Int = characterList.size
-
 
     fun updateCharacterList(newList: List<CharacterResult>) {
         characterList = newList as MutableList<CharacterResult>

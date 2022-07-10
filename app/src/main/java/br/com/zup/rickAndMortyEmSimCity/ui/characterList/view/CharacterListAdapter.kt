@@ -28,7 +28,6 @@ class CharacterListAdapter(
         holder.binding.cvItemList.setOnClickListener {
             clickCharacter(personage)
         }
-
     }
 
     override fun getItemCount(): Int = characterList.size
