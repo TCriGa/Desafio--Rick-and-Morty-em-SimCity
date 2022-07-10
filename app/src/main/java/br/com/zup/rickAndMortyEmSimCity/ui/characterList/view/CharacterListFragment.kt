@@ -32,7 +32,7 @@ class CharacterListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-      binding = FragmentCharacterListBinding.inflate(inflater, container, false)
+        binding = FragmentCharacterListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,7 +41,7 @@ class CharacterListFragment : Fragment() {
         exhibitRecycleView()
         viewModel.getAllPersonage()
         initObserver()
-        goToFavoriteList()
+
     }
 
     private fun initObserver() {
@@ -62,11 +62,10 @@ class CharacterListFragment : Fragment() {
         }
     }
 
-    private fun goToFavoriteList() {
-        binding.floatingActionButton.setOnClickListener {
-            NavHostFragment.findNavController(this)
-                .navigate(R.id.action_personageListFragment_to_characterFavoriteFragment)
-        }
+    private fun goToFavoriteList(characterResult: CharacterResult) {
+        val bundle = bundleOf(BUNDLE_KEY to characterResult)
+        NavHostFragment.findNavController(this)
+            .navigate(R.id.action_personageListFragment_to_characterFavoriteFragment, bundle)
     }
 
     private fun exhibitRecycleView() {
@@ -75,9 +74,10 @@ class CharacterListFragment : Fragment() {
 
     private fun goToPersonageDetail(characterResult: CharacterResult) {
         val bundle = bundleOf(BUNDLE_KEY to characterResult)
-
         NavHostFragment.findNavController(this)
             .navigate(R.id.action_personageListFragment_to_characterDetailFragment, bundle)
     }
 }
+
+
 

@@ -29,18 +29,4 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
             }
         }
     }
-
-    fun updateMovieFavorite(characterResult: CharacterResult) {
-        viewModelScope.launch {
-            try {
-                val response = withContext(Dispatchers.IO) {
-                    characterUseCase.updateCharacter(characterResult)
-                }
-                characterFavoriteListState.value = response
-            } catch (ex: Exception) {
-                characterFavoriteListState.value =
-                    ViewState.Error(Throwable("Não foi possivel atualizar o filme"))
-            }
-        }
-    }
 }

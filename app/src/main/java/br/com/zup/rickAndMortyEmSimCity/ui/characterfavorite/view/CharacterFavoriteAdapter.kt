@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso
 class CharacterFavoriteAdapter(
     private var characterList: MutableList<CharacterResult>,
     private val clickCharacter: (characterResult: CharacterResult) -> Unit,
-
+    private val clickDisfavorCharacter : (CharacterResult : CharacterResult) -> Unit
 
 ) : RecyclerView.Adapter<CharacterFavoriteAdapter.ViewHolder>() {
 

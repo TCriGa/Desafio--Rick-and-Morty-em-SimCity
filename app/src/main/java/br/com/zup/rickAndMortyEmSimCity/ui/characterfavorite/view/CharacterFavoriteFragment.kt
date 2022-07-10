@@ -26,7 +26,7 @@ class CharacterFavoriteFragment : Fragment() {
     }
 
     private val adapterList: CharacterFavoriteAdapter by lazy {
-        CharacterFavoriteAdapter(arrayListOf(), this::goToCharacterDetail)
+        CharacterFavoriteAdapter(arrayListOf(), this::goToCharacterDetail, this:: goToDisfavorCharacter)
     }
 
     override fun onCreateView(
@@ -96,7 +96,7 @@ class CharacterFavoriteFragment : Fragment() {
         binding.rvFavoriteCharacter.adapter = adapterList
     }
 
-    private fun disfavorMovie(characterResult: CharacterResult) {
+    private fun goToDisfavorCharacter(characterResult: CharacterResult) {
         viewModel.disfavorCharacter(characterResult)
     }
 

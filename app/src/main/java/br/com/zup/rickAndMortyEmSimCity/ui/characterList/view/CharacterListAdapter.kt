@@ -11,6 +11,7 @@ class CharacterListAdapter(
     private var characterList: MutableList<CharacterResult>,
     private val clickCharacter : (CharacterResult : CharacterResult) -> Unit
 
+
     ) : RecyclerView.Adapter<CharacterListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,7 +38,6 @@ class CharacterListAdapter(
         notifyDataSetChanged()
     }
     class ViewHolder(val binding: CharacterListItemBinding) : RecyclerView.ViewHolder(binding.root){
-
         fun showPersonageInfo(characterResult: CharacterResult){
             binding.textNamePersonage.text = characterResult.name
             Picasso.get().load(characterResult.image)
