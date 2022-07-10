@@ -23,4 +23,6 @@ data class CharacterResult(
     var species: String = "",
     @SerializedName("status")
     var status: String = "",
+
+    var isFavorite: Boolean
 ) : Parcelable

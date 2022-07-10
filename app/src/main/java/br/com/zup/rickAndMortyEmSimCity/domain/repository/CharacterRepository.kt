@@ -11,17 +11,15 @@ class CharacterRepository(private val characterDAO: CharacterDAO) {
     suspend fun getInformationCharacter(): List<CharacterResult> =
         characterDAO.getInformationCharacter()
 
-    suspend fun insertInformationCharacterDB(listCharacter : List<CharacterResult>){
+    suspend fun insertInformationCharacterDB(listCharacter: List<CharacterResult>) =
         characterDAO.insertInformationCharacter(listCharacter)
-    }
 
-    suspend fun updateCharacter(character: CharacterResult){
+    suspend fun geAllCharacterNetwork(): CharacterResponse =
+        RetrofitService.apiService.getAllCharacterNetwork()
+
+    suspend fun getCharactersFavorite(): List<CharacterResult> =
+        characterDAO.getCharactersFavorite()
+
+    suspend fun updateCharacter(character: CharacterResult) =
         characterDAO.updateCharacter(character)
-    }
-
-    suspend fun geAllCharacterNetwork(): CharacterResponse {
-        return RetrofitService.apiService.getAllCharacterNetwork()
-
-    }
-
 }

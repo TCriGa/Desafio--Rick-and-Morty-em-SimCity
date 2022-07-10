@@ -11,8 +11,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class CharacterViewModel(application: Application) : AndroidViewModel(application) {
-   private val characterUseCase = CharacterUseCase(application)
+    private val characterUseCase = CharacterUseCase(application)
     val characterListState = MutableLiveData<ViewState<List<CharacterResult>>>()
+    val characterFavoriteListState = MutableLiveData<ViewState<CharacterResult>>()
 
     fun getAllPersonage() {
         viewModelScope.launch {
@@ -20,7 +21,7 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
                 val response = withContext(Dispatchers.IO) {
                     characterUseCase.getAllCharacterNetwork()
                 }
-               characterListState.value = response
+                characterListState.value = response
 
             } catch (ex: Exception) {
                 characterListState.value =
@@ -28,13 +29,17 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
             }
         }
     }
-    fun updateMovieFavorited(characterResult: CharacterResult) {
+
+    fun updateMovieFavorite(characterResult: CharacterResult) {
         viewModelScope.launch {
             try {
                 val response = withContext(Dispatchers.IO) {
                     characterUseCase.updateCharacter(characterResult)
                 }
+                characterFavoriteListState.value = response
             } catch (ex: Exception) {
+                characterFavoriteListState.value =
+                    ViewState.Error(Throwable("Não foi possivel atualizar o filme"))
             }
         }
     }

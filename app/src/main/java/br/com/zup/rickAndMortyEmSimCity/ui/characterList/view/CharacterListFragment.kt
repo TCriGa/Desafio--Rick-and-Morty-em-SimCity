@@ -32,7 +32,7 @@ class CharacterListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCharacterListBinding.inflate(inflater, container, false)
+      binding = FragmentCharacterListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,13 +41,14 @@ class CharacterListFragment : Fragment() {
         exhibitRecycleView()
         viewModel.getAllPersonage()
         initObserver()
+        goToFavoriteList()
     }
 
     private fun initObserver() {
         viewModel.characterListState.observe(this.viewLifecycleOwner) {
             when (it) {
                 is ViewState.Success -> {
-                    adapterList.updateMovieList(it.data)
+                    adapterList.updateCharacterList(it.data.toMutableList())
                 }
                 is ViewState.Error -> {
                     Toast.makeText(
@@ -58,6 +59,13 @@ class CharacterListFragment : Fragment() {
                 }
                 else -> {}
             }
+        }
+    }
+
+    private fun goToFavoriteList() {
+        binding.floatingActionButton.setOnClickListener {
+            NavHostFragment.findNavController(this)
+                .navigate(R.id.action_personageListFragment_to_characterFavoriteFragment)
         }
     }
 

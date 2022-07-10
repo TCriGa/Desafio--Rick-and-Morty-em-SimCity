@@ -14,4 +14,7 @@ interface CharacterDAO {
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
     fun updateCharacter(character: CharacterResult)
+
+    @Query("SELECT * FROM character WHERE isFavorite = 1")
+    fun getCharactersFavorite(): List<CharacterResult>
 }

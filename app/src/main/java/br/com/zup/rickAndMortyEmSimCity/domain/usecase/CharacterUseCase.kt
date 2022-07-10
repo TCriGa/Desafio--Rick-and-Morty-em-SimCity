@@ -10,7 +10,7 @@ class CharacterUseCase(application: Application) {
     private val characterDao = CharacterDataBase.getDatabase(application).characterDao()
     private val characterRepository = CharacterRepository(characterDao)
 
-    suspend fun getInformationCharacter(): ViewState<List<CharacterResult>> {
+    private suspend fun getInformationCharacter(): ViewState<List<CharacterResult>> {
         return try {
             val characterResult = characterRepository.getInformationCharacter()
             ViewState.Success(characterResult)
@@ -19,22 +19,38 @@ class CharacterUseCase(application: Application) {
         }
     }
 
-    suspend fun getAllCharacterNetwork(): ViewState<List<CharacterResult>>{
-       return try {
-           val response = characterRepository.geAllCharacterNetwork()
-           characterRepository.insertInformationCharacterDB(response.results)
-           ViewState.Success(response.results)
-       }catch (ex:Exception){
-           getInformationCharacter()
-       }
+    suspend fun getAllCharacterNetwork(): ViewState<List<CharacterResult>> {
+        return try {
+            val response = characterRepository.geAllCharacterNetwork()
+            characterRepository.insertInformationCharacterDB(response.results)
+            ViewState.Success(response.results)
+        } catch (ex: Exception) {
+            getInformationCharacter()
+        }
     }
 
-    suspend fun updateCharacter(characterResult: CharacterResult):ViewState<CharacterResult>{
+
+    suspend fun getCharactersFavorite(): ViewState<List<CharacterResult>> {
+        return try {
+            val character = characterRepository.getCharactersFavorite()
+            ViewState.Success(character)
+        } catch (ex: Exception) {
+            ViewState.Error(
+                Exception(
+                    "Não foi possível carregar a lista de personagens favoritados!" +
+                            " Tente novamente! :D"
+                )
+            )
+        }
+    }
+
+    suspend fun updateCharacter(characterResult: CharacterResult): ViewState<CharacterResult> {
         return try {
             characterRepository.updateCharacter(characterResult)
             ViewState.Success(characterResult)
-        }catch (ex: Exception){
+        } catch (ex: Exception) {
             ViewState.Error(Exception("Não foi possível atualizar o personagem"))
         }
     }
+
 }

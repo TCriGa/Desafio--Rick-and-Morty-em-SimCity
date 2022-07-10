@@ -24,18 +24,25 @@ class CharacterDetailFragment : Fragment() {
 
     }
 
-    private fun getPassedData(){
+    private fun getPassedData() {
         val characterDetail = arguments?.getParcelable<CharacterResult>(BUNDLE_KEY)
         characterDetail?.let {
             Picasso.get().load(it.image)
                 .into(binding.imageRickSanches)
             binding.textNamePersonage.text = "$NAME ${it.name}"
             binding.textSpecie.text = "$SPECIE ${it.species}"
-            binding.textStatus.text = "$STATUS ${ it.status }"
+            binding.textStatus.text = "$STATUS ${it.status}"
             binding.textGender.text = "$GENDER  ${it.gender}"
-
+            binding.imageFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    binding.root.context,
+                    if (it.isFavorite)
+                        R.drawable.ic_disfavor
+                    else
+                        R.drawable.ic_favorite
+                )
+            )
             (activity as AppCompatActivity).supportActionBar?.title = it.name
         }
-
     }
 }

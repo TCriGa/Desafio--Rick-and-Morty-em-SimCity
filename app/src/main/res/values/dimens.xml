@@ -13,4 +13,7 @@
     <dimen name="height_40">40dp</dimen>
     <dimen name="width_56">56dp</dimen>
     <dimen name="height_56">56dp</dimen>
+    <dimen name="imageSize_40">40dp</dimen>
+    <dimen name="padding_56">56dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
 </resources>
