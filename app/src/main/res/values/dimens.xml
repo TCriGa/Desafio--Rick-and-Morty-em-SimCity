@@ -11,4 +11,6 @@
     <dimen name="height_250">250dp</dimen>
     <dimen name="width_40">40dp</dimen>
     <dimen name="height_40">40dp</dimen>
+    <dimen name="width_56">56dp</dimen>
+    <dimen name="height_56">56dp</dimen>
 </resources>

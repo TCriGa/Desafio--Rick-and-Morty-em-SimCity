@@ -23,8 +23,8 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button"
         app:srcCompat="@drawable/ic_favorite"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/width_56"
+        android:layout_height="@dimen/height_56"
         android:layout_margin="@dimen/margin_16"
         android:contentDescription="@string/descricao_botao_flutuante"
         app:layout_constraintBottom_toBottomOf="parent"

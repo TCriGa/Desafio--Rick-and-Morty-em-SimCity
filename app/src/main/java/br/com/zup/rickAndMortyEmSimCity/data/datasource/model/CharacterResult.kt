@@ -13,7 +13,6 @@ data class CharacterResult(
     @SerializedName("id")
     @PrimaryKey(autoGenerate = false)
     var id: Int = 0,
-
     @SerializedName("gender")
     var gender: String = "",
     @SerializedName("image")

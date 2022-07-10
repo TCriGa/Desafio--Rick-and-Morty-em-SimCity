@@ -6,7 +6,7 @@ import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 @Dao
 interface CharacterDAO {
 
-    @Query("SELECT * FROM character ORDER BY id ASC")
+    @Query("SELECT * FROM character ORDER BY name ASC")
     fun getInformationCharacter(): List<CharacterResult>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

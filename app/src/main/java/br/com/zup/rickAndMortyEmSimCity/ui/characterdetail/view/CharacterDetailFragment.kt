@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import br.com.zup.rickAndMortyEmSimCity.BUNDLE_KEY
+import br.com.zup.rickAndMortyEmSimCity.*
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 import br.com.zup.rickAndMortyEmSimCity.databinding.FragmentCharacterDetailBinding
 import com.squareup.picasso.Picasso
@@ -29,10 +29,10 @@ class CharacterDetailFragment : Fragment() {
         characterDetail?.let {
             Picasso.get().load(it.image)
                 .into(binding.imageRickSanches)
-            binding.textNamePersonage.text = "Nome: ${it.name}"
-            binding.textSpecie.text = "Espécie: ${it.species}"
-            binding.textStatus.text = "Status: ${ it.status }"
-            binding.textGender.text = "Genêro:  ${it.gender}"
+            binding.textNamePersonage.text = "$NAME ${it.name}"
+            binding.textSpecie.text = "$SPECIE ${it.species}"
+            binding.textStatus.text = "$STATUS ${ it.status }"
+            binding.textGender.text = "$GENDER  ${it.gender}"
 
             (activity as AppCompatActivity).supportActionBar?.title = it.name
         }
