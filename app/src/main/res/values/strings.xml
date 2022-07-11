@@ -9,4 +9,5 @@
     <string name="specie">Specie</string>
     <string name="gender">Gender</string>
     <string name="descricao_botao_flutuante">Botão Flutuante</string>
+    <string name="IsEmpty">Nada aqui, você não adicionou nada na sua lista de favorito!</string>
 </resources>

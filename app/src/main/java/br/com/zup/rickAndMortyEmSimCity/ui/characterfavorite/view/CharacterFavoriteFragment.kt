@@ -53,6 +53,10 @@ class CharacterFavoriteFragment : Fragment() {
             when (it) {
                 is ViewState.Success -> {
                     adapterList.updateCharacterList(it.data.toMutableList())
+                    if (it.data.isEmpty()) {
+                        Toast.makeText(context, getString(R.string.IsEmpty), Toast.LENGTH_LONG)
+                            .show()
+                    }
                 }
 
                 is ViewState.Error -> {
@@ -62,6 +66,7 @@ class CharacterFavoriteFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
                 else -> {}
             }
         }
