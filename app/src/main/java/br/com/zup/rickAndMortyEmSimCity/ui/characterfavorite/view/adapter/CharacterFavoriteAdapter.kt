@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 
 class CharacterFavoriteAdapter(
     private var characterList: MutableList<CharacterResult>,
-    private val clickDisfavorCharacter : (CharacterResult : CharacterResult) -> Unit
+    private val clickDisfavorCharacter: (CharacterResult: CharacterResult) -> Unit
 
 ) : RecyclerView.Adapter<CharacterFavoriteAdapter.ViewHolder>() {
 
@@ -34,8 +34,9 @@ class CharacterFavoriteAdapter(
         notifyDataSetChanged()
     }
 
-    class ViewHolder(val binding: CharacterListItemBinding) : RecyclerView.ViewHolder(binding.root){
-        fun showCharacterInfo(characterResult: CharacterResult){
+    class ViewHolder(val binding: CharacterListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun showCharacterInfo(characterResult: CharacterResult) {
             binding.textNamePersonage.text = characterResult.name
             Picasso.get().load(characterResult.image)
                 .into(binding.imageIcRickMorty)

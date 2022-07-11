@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import br.com.zup.rickAndMortyEmSimCity.ERROR_LIST_CHARACTER
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 import br.com.zup.rickAndMortyEmSimCity.domain.usecase.CharacterUseCase
 import br.com.zup.rickAndMortyEmSimCity.ui.viewstate.ViewState
@@ -25,7 +26,7 @@ class CharacterListViewModel(application: Application) : AndroidViewModel(applic
 
             } catch (ex: Exception) {
                 characterListState.value =
-                    ViewState.Error(Throwable("Não foi possível carregar a lista!"))
+                    ViewState.Error(Throwable(ERROR_LIST_CHARACTER))
             }
         }
     }

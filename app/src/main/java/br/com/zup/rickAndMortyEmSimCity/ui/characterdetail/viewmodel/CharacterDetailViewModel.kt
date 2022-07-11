@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import br.com.zup.rickAndMortyEmSimCity.ERROR_DETAIL_CHARACTER
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 import br.com.zup.rickAndMortyEmSimCity.domain.usecase.CharacterUseCase
 import br.com.zup.rickAndMortyEmSimCity.ui.viewstate.ViewState
@@ -24,7 +25,7 @@ class CharacterDetailViewModel(application: Application) : AndroidViewModel(appl
                 characterFavoriteDetailState.value = response
             } catch (ex: Exception) {
                 characterFavoriteDetailState.value =
-                    ViewState.Error(Throwable("Não foi possivel atualizar o filme"))
+                    ViewState.Error(Throwable(ERROR_DETAIL_CHARACTER))
             }
         }
     }

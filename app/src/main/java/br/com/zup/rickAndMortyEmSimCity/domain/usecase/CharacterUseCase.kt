@@ -1,6 +1,9 @@
 package br.com.zup.rickAndMortyEmSimCity.domain.usecase
 
 import android.app.Application
+import br.com.zup.rickAndMortyEmSimCity.ERROR_BD
+import br.com.zup.rickAndMortyEmSimCity.ERROR_FAVORITE_LIST
+import br.com.zup.rickAndMortyEmSimCity.ERROR_CHARACTER
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.local.CharacterDataBase
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 import br.com.zup.rickAndMortyEmSimCity.domain.repository.CharacterRepository
@@ -16,7 +19,7 @@ class CharacterUseCase(application: Application) {
             ViewState.Success(characterResult)
 
         } catch (ex: Exception) {
-            ViewState.Error(Exception("Não foi possível carregar a lista de personagens do Banco de Dados"))
+            ViewState.Error(Exception(ERROR_BD))
         }
     }
 
@@ -39,8 +42,7 @@ class CharacterUseCase(application: Application) {
         } catch (ex: Exception) {
             ViewState.Error(
                 Exception(
-                    "Não foi possível carregar a lista de personagens favoritados!" +
-                            " Tente novamente! :D"
+                    ERROR_FAVORITE_LIST
                 )
             )
         }
@@ -51,7 +53,7 @@ class CharacterUseCase(application: Application) {
             characterRepository.updateCharacter(characterResult)
             ViewState.Success(characterResult)
         } catch (ex: Exception) {
-            ViewState.Error(Exception("Não foi possível atualizar o personagem"))
+            ViewState.Error(Exception(ERROR_CHARACTER))
         }
     }
 
