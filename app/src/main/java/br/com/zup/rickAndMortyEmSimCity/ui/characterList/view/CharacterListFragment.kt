@@ -58,15 +58,7 @@ class CharacterListFragment : Fragment() {
                         "${it.throwable.message}",
                         Toast.LENGTH_LONG
                     ).show()
-                }
 
-                is ViewState.IsEmpty -> {
-
-                    Toast.makeText(
-                        context,
-                        getString(R.string.IsEmpty),
-                        Toast.LENGTH_LONG
-                    ).show()
                 }
                 else -> {}
             }
@@ -76,8 +68,8 @@ class CharacterListFragment : Fragment() {
     private fun goToFavoriteList(characterResult: List<CharacterResult>) {
         val bundle = bundleOf(BUNDLE_KEY to characterResult)
         binding.floatingActionButton.setOnClickListener {
-                NavHostFragment.findNavController(this)
-                    .navigate(R.id.action_personageListFragment_to_characterFavoriteFragment, bundle)
+            NavHostFragment.findNavController(this)
+                .navigate(R.id.action_personageListFragment_to_characterFavoriteFragment, bundle)
 
         }
     }

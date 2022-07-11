@@ -9,6 +9,6 @@ interface CharacterAPI {
     @GET("character")
     suspend fun getAllCharacterNetwork(
         @Query("page")
-        pages: Int = 5
+        pages: Int = 6
     ): CharacterResponse
 }

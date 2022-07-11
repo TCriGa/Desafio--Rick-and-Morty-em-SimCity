@@ -28,5 +28,4 @@ class CharacterDetailViewModel(application: Application) : AndroidViewModel(appl
             }
         }
     }
-
 }

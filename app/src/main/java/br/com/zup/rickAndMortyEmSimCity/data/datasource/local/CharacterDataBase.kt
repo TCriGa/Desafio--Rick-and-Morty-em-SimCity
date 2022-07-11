@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.local.dao.CharacterDAO
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 
-@Database(entities = [CharacterResult::class], version = 2)
+@Database(entities = [CharacterResult::class], version = 3)
 abstract class CharacterDataBase : RoomDatabase() {
     abstract fun characterDao(): CharacterDAO
 
