@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,8 +13,8 @@ import br.com.zup.rickAndMortyEmSimCity.BUNDLE_KEY
 import br.com.zup.rickAndMortyEmSimCity.R
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 import br.com.zup.rickAndMortyEmSimCity.databinding.FragmentCharacterListBinding
-import br.com.zup.rickAndMortyEmSimCity.ui.characterList.viewmodel.CharacterViewModel
-import br.com.zup.rickAndMortyEmSimCity.ui.characterfavorite.view.CharacterFavoriteAdapter
+import br.com.zup.rickAndMortyEmSimCity.ui.characterList.view.adapter.CharacterListAdapter
+import br.com.zup.rickAndMortyEmSimCity.ui.characterList.viewmodel.CharacterListViewModel
 import br.com.zup.rickAndMortyEmSimCity.ui.viewstate.ViewState
 
 class CharacterListFragment : Fragment() {
@@ -27,8 +26,8 @@ class CharacterListFragment : Fragment() {
     }
 
 
-    private val viewModel: CharacterViewModel by lazy {
-        ViewModelProvider(this)[CharacterViewModel::class.java]
+    private val viewModel: CharacterListViewModel by lazy {
+        ViewModelProvider(this)[CharacterListViewModel::class.java]
     }
 
     override fun onCreateView(

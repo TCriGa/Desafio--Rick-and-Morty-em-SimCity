@@ -10,7 +10,7 @@ interface CharacterDAO {
     fun getInformationCharacter(): List<CharacterResult>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertInformationCharacter(listCharacter :List<CharacterResult>)
+    fun insertInformationCharacter(listCharacter: List<CharacterResult>)
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
     fun updateCharacter(character: CharacterResult)

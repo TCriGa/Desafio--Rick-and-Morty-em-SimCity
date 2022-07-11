@@ -8,7 +8,7 @@ import br.com.zup.rickAndMortyEmSimCity.data.datasource.local.dao.CharacterDAO
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 
 @Database(entities = [CharacterResult::class], version = 2)
-abstract class CharacterDataBase : RoomDatabase(){
+abstract class CharacterDataBase : RoomDatabase() {
     abstract fun characterDao(): CharacterDAO
 
     companion object {

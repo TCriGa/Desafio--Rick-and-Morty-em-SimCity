@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CharacterDetailViewModel (application: Application): AndroidViewModel(application){
+class CharacterDetailViewModel(application: Application) : AndroidViewModel(application) {
     private val characterUseCase = CharacterUseCase(application)
     val characterFavoriteDetailState = MutableLiveData<ViewState<CharacterResult>>()
 

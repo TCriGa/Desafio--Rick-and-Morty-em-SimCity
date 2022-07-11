@@ -1,21 +1,19 @@
 package br.com.zup.rickAndMortyEmSimCity.ui.characterfavorite.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import br.com.zup.rickAndMortyEmSimCity.BUNDLE_KEY
 import br.com.zup.rickAndMortyEmSimCity.R
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 import br.com.zup.rickAndMortyEmSimCity.databinding.FragmentCharacterFavoriteBinding
-import br.com.zup.rickAndMortyEmSimCity.ui.characterList.view.CharacterListAdapter
+import br.com.zup.rickAndMortyEmSimCity.ui.characterfavorite.view.adapter.CharacterFavoriteAdapter
 import br.com.zup.rickAndMortyEmSimCity.ui.characterfavorite.viewmodel.CharacterFavoriteViewModel
 import br.com.zup.rickAndMortyEmSimCity.ui.viewstate.ViewState
 
@@ -49,6 +47,7 @@ class CharacterFavoriteFragment : Fragment() {
         super.onResume()
         viewModel.getCharactersFavorite()
     }
+
     private fun initObserver() {
         viewModel.characterListFavoriteState.observe(this.viewLifecycleOwner) {
             when (it) {

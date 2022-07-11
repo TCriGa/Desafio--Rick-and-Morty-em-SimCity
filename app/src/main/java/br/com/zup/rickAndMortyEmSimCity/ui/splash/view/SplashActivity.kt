@@ -1,8 +1,8 @@
 package br.com.zup.rickAndMortyEmSimCity.ui.splash.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import br.com.zup.rickAndMortyEmSimCity.R
 import br.com.zup.rickAndMortyEmSimCity.ui.home.view.HomeActivity
 import java.util.*
@@ -19,6 +19,7 @@ class SplashActivity : AppCompatActivity() {
             }
         }, 3000)
     }
+
     private fun jump() {
         timer.cancel()
         startActivity(Intent(this, HomeActivity::class.java))

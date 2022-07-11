@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CharacterViewModel(application: Application) : AndroidViewModel(application) {
+class CharacterListViewModel(application: Application) : AndroidViewModel(application) {
     private val characterUseCase = CharacterUseCase(application)
     val characterListState = MutableLiveData<ViewState<List<CharacterResult>>>()
 

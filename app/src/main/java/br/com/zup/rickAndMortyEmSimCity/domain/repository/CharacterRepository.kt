@@ -4,7 +4,6 @@ import br.com.zup.rickAndMortyEmSimCity.data.datasource.local.dao.CharacterDAO
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResponse
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.remote.RetrofitService
-import br.com.zup.rickAndMortyEmSimCity.ui.viewstate.ViewState
 
 class CharacterRepository(private val characterDAO: CharacterDAO) {
 
