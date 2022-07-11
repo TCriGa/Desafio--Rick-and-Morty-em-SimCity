@@ -38,19 +38,17 @@ class CharacterFavoriteFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initObserver()
-        viewModel.getCharactersFavorite()
         exhibitRecycleView()
-
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getCharactersFavorite()
+    }
     private fun initObserver() {
         viewModel.characterListFavoriteState.observe(this.viewLifecycleOwner) {
             when (it) {

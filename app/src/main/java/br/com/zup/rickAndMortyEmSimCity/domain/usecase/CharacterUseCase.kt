@@ -14,6 +14,7 @@ class CharacterUseCase(application: Application) {
         return try {
             val characterResult = characterRepository.getInformationCharacter()
             ViewState.Success(characterResult)
+
         } catch (ex: Exception) {
             ViewState.Error(Exception("Não foi possível carregar a lista de personagens do Banco de Dados"))
         }
@@ -24,6 +25,7 @@ class CharacterUseCase(application: Application) {
             val response = characterRepository.geAllCharacterNetwork()
             characterRepository.insertInformationCharacterDB(response.results)
             ViewState.Success(response.results)
+            getInformationCharacter()
         } catch (ex: Exception) {
             getInformationCharacter()
         }

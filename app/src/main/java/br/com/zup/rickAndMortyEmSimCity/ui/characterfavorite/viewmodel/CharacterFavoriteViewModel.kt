@@ -33,23 +33,4 @@ class CharacterFavoriteViewModel(application: Application) : AndroidViewModel(ap
             }
         }
     }
-
-    fun disfavorCharacter(characterResult: CharacterResult) {
-        viewModelScope.launch {
-            try {
-                val response = withContext(Dispatchers.IO) {
-                    characterUseCase.updateCharacter(characterResult)
-                }
-                characterListDisfavorState.value = response
-            } catch (ex: Exception) {
-                characterListDisfavorState.value =
-                    ViewState.Error(
-                        Throwable(
-                            "Não foi possivel desfavoritar o personagem," +
-                                    " tente novamente! :D"
-                        )
-                    )
-            }
-        }
-    }
 }

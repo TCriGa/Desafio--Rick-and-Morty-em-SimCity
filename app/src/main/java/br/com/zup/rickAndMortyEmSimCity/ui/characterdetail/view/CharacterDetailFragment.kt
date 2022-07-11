@@ -44,6 +44,15 @@ class CharacterDetailFragment : Fragment() {
             binding.textSpecie.text = "$SPECIE ${it.species}"
             binding.textStatus.text = "$STATUS ${it.status}"
             binding.textGender.text = "$GENDER  ${it.gender}"
+            binding.imageFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    binding.root.context,
+                    if (it.isFavorite)
+                        R.drawable.ic_favorite
+                    else
+                        R.drawable.ic_disfavor
+                )
+            )
             clickImageFavorite(it)
             (activity as AppCompatActivity).supportActionBar?.title = it.name
         }
