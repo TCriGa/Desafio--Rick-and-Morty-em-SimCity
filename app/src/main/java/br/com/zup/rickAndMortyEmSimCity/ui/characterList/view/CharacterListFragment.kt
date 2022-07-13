@@ -100,11 +100,6 @@ class CharacterListFragment : Fragment() {
             ) {
                 super.onScrolled(recyclerView, dx, dy)
 
-                val layoutManager = recyclerView.layoutManager as GridLayoutManager?
-                val totalItemCount: Int = layoutManager?.itemCount ?: 0
-                val lastVisible: Int = layoutManager?.findLastVisibleItemPosition() ?: 0
-                val ultimoItem = lastVisible + 5 >= totalItemCount
-
                 if (dy > 0)
                  {
                     page++
