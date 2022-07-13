@@ -23,9 +23,9 @@ class CharacterUseCase(application: Application) {
         }
     }
 
-    suspend fun getAllCharacterNetwork(): ViewState<List<CharacterResult>> {
+    suspend fun getAllCharacterNetwork(page : Int): ViewState<List<CharacterResult>> {
         return try {
-            val response = characterRepository.geAllCharacterNetwork()
+            val response = characterRepository.geAllCharacterNetwork(page)
             characterRepository.insertInformationCharacterDB(response.results)
             ViewState.Success(response.results)
             getInformationCharacter()

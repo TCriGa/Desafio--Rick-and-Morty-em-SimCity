@@ -44,6 +44,7 @@ class CharacterDetailFragment : Fragment() {
             binding.textSpecie.text = "$SPECIE ${it.species}"
             binding.textStatus.text = "$STATUS ${it.status}"
             binding.textGender.text = "$GENDER  ${it.gender}"
+
             binding.imageFavorite.setImageDrawable(
                 ContextCompat.getDrawable(
                     binding.root.context,

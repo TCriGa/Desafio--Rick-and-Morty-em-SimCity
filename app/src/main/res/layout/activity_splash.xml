@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:contentDescription="@string/description_image_splash"
-        android:paddingTop="40dp"
+        android:paddingTop="@dimen/padding_40"
         android:scaleType="centerCrop"
         android:src="@drawable/rick_morty"
         app:layout_constraintBottom_toBottomOf="parent"

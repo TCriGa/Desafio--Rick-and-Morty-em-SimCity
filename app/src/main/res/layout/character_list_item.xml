@@ -27,7 +27,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_namePersonage"
             android:layout_margin="@dimen/margin_8"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:text="@string/name_personage"
             android:backgroundTint="@color/dark_blue"

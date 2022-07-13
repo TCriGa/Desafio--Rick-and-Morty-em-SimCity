@@ -5,20 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.zup.rickAndMortyEmSimCity.BUNDLE_KEY
 import br.com.zup.rickAndMortyEmSimCity.R
+import br.com.zup.rickAndMortyEmSimCity.season.CharacterEvents
 import br.com.zup.rickAndMortyEmSimCity.data.datasource.model.CharacterResult
 import br.com.zup.rickAndMortyEmSimCity.databinding.FragmentCharacterListBinding
+import br.com.zup.rickAndMortyEmSimCity.season.CharacterInteraction
 import br.com.zup.rickAndMortyEmSimCity.ui.characterList.view.adapter.CharacterListAdapter
 import br.com.zup.rickAndMortyEmSimCity.ui.characterList.viewmodel.CharacterListViewModel
 import br.com.zup.rickAndMortyEmSimCity.ui.viewstate.ViewState
+import java.util.*
 
 class CharacterListFragment : Fragment() {
-
+    private var page = 1
     private lateinit var binding: FragmentCharacterListBinding
 
     private val adapterList: CharacterListAdapter by lazy {
@@ -40,8 +47,9 @@ class CharacterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        exhibitRecycleView()
-        viewModel.getAllPersonage()
+        setRecycleView()
+        viewModel.getAllPersonage(page)
+        scrollPaginationList()
         initObserver()
     }
 
@@ -74,7 +82,7 @@ class CharacterListFragment : Fragment() {
         }
     }
 
-    private fun exhibitRecycleView() {
+    private fun setRecycleView() {
         binding.rvListPersonage.adapter = adapterList
     }
 
@@ -82,6 +90,28 @@ class CharacterListFragment : Fragment() {
         val bundle = bundleOf(BUNDLE_KEY to characterResult)
         NavHostFragment.findNavController(this)
             .navigate(R.id.action_personageListFragment_to_characterDetailFragment, bundle)
+    }
+
+    private fun scrollPaginationList() {
+
+        binding.rvListPersonage.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(
+                @NonNull recyclerView: RecyclerView, dx: Int, dy: Int
+            ) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val layoutManager = recyclerView.layoutManager as GridLayoutManager?
+                val totalItemCount: Int = layoutManager?.itemCount ?: 0
+                val lastVisible: Int = layoutManager?.findLastVisibleItemPosition() ?: 0
+                val ultimoItem = lastVisible + 5 >= totalItemCount
+
+                if (dy > 0)
+                 {
+                    page++
+                    viewModel.interpret(CharacterInteraction.ShowList(page = page))
+                }
+            }
+        })
     }
 }
 
